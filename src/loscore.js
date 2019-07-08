@@ -86,7 +86,7 @@ class LoScore {
   * */
   extend(obj, ...objs) {
     this.each(objs, (item) => {
-      for (let key in item) {
+      for (const key in item) {
         obj[key] = item[key];
       }
     });
