@@ -167,14 +167,24 @@ class LoScore {
   }
 
   zip(...arrays) {
-    // const result = [];
-    // const len = this.reduce(
-    //   arrays,
-    //   (memo, arr) => {
-    //     return arr.length > memo ? arr.length : memo;
-    //   },
-    //   0
-    // );
+    const len = this.reduce(
+      arrays,
+      (memo, arr) => {
+        return arr.length > memo ? arr.length : memo;
+      },
+      0
+    );
+
+    const result = [];
+    this.each(arrays, (arr) => {
+      for (var i = 0; i < len; i++) {
+        if (result[i] === undefined) {
+          result[i] = [];
+        }
+        result[i].push(arr[i]);
+      }
+    });
+    return result;
   }
 
   delay() {

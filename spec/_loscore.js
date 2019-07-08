@@ -789,12 +789,15 @@ describe("LoScore", () => {
       expect(result).to.eql(expected);
     });
     it("should be able to zip arrays of different sizes", () => {
-      const result = _.zip([["moe", "larry", "curly"], [30], [true, false]]);
-      console.log(result);
+      const result = _.zip(
+        ["moe", "larry", "curly"],
+        [30, 40, 50],
+        [true, false]
+      );
       const expected = [
         ["moe", 30, true],
-        ["larry", null, false],
-        ["curly", null, null],
+        ["larry", 40, false],
+        ["curly", 50, undefined],
       ];
       expect(result).to.eql(expected);
     });
