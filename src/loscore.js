@@ -122,7 +122,15 @@ class LoScore {
   }
 
   invoke(collection, functionOrKey) {
-    // YOUR CODE HERE
+    const result = [];
+    this.each(collection, (element) => {
+      let newItem;
+      if (typeof functionOrKey === "string") newItem = element[functionOrKey]();
+      else newItem = functionOrKey.apply(element);
+
+      result.push(newItem);
+    });
+    return result;
   }
 
   /**
