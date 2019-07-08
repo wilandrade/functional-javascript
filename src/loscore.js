@@ -99,7 +99,15 @@ class LoScore {
   * */
 
   once(func) {
-    // YOUR CODE HERE
+    let wasCalled = false;
+    let result = undefined;
+    return (...args) => {
+      if (!wasCalled) {
+        wasCalled = true;
+        result = func.apply(null, args);
+      }
+      return result;
+    };
   }
 
   memoize(func) {
