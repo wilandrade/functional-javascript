@@ -68,8 +68,16 @@ class LoScore {
     return memo;
   }
 
-  every() {
-    // YOUR CODE HERE
+  every(collection, iterator) {
+    iterator = iterator === undefined ? this.identity : iterator;
+    return this.reduce(
+      collection,
+      (memo, element) => {
+        if (!memo) return false;
+        return iterator(element) ? true : false;
+      },
+      true
+    );
   }
 
   /**
