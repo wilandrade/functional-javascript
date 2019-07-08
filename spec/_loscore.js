@@ -773,4 +773,30 @@ describe("LoScore", () => {
       expect(result).to.eql(expected);
     });
   });
+
+  describe("zip", () => {
+    it("should be able to zip arrays of similar sizes", () => {
+      const result = _.zip(
+        ["moe", "larry", "curly"],
+        [30, 40, 50],
+        [true, false, false]
+      );
+      const expected = [
+        ["moe", 30, true],
+        ["larry", 40, false],
+        ["curly", 50, false],
+      ];
+      expect(result).to.eql(expected);
+    });
+    it("should be able to zip arrays of different sizes", () => {
+      const result = _.zip([["moe", "larry", "curly"], [30], [true, false]]);
+      console.log(result);
+      const expected = [
+        ["moe", 30, true],
+        ["larry", null, false],
+        ["curly", null, null],
+      ];
+      expect(result).to.eql(expected);
+    });
+  });
 });
