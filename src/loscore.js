@@ -100,18 +100,25 @@ class LoScore {
 
   once(func) {
     let wasCalled = false;
-    let result = undefined;
+    let result;
     return (...args) => {
       if (!wasCalled) {
         wasCalled = true;
-        result = func.apply(null, args);
+        result = func(...args);
       }
       return result;
     };
   }
 
   memoize(func) {
-    // YOUR CODE HERE
+    const resultsObj = {};
+
+    return (...args) => {
+      if (resultsObj[args] === undefined) {
+        resultsObj[args] = func(...args);
+      }
+      return resultsObj[args];
+    };
   }
 
   invoke(collection, functionOrKey) {
