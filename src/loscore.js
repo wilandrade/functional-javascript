@@ -138,8 +138,32 @@ class LoScore {
   |~~~~~~~~~~~~~
   * */
 
-  sortBy() {
-    // YOUR CODE HERE
+  sortBy(arr, functionOrKey) {
+    const newArr = arr.slice(0);
+
+    const swapElements = (newArr, i, j) => {
+      const temp = newArr[i];
+      newArr[i] = newArr[j];
+      newArr[j] = temp;
+    };
+
+    for (let i = 0; i < newArr.length; i++) {
+      let minIndex = i;
+      for (let j = i; j < newArr.length; j++) {
+        if (typeof functionOrKey === "function") {
+          if (functionOrKey(newArr[j]) < functionOrKey(newArr[minIndex])) {
+            minIndex = j;
+          }
+        } else {
+          if (newArr[j][functionOrKey] < newArr[minIndex][functionOrKey]) {
+            minIndex = j;
+          }
+        }
+      }
+      if (minIndex !== i) swapElements(newArr, i, minIndex);
+    }
+
+    return newArr;
   }
 
   zip() {

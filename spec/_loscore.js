@@ -750,4 +750,27 @@ describe("LoScore", () => {
       });
     });
   });
+
+  describe("sortBy", () => {
+    it("should be able to use a function to sort items in an array", () => {
+      const testFunc = function(num) {
+        return Math.sin(num);
+      };
+      expect(_.sortBy([1, 2, 3, 4, 5, 6], testFunc)).to.eql([5, 4, 6, 3, 1, 2]);
+    });
+    it("should be able to use a property to sort items in an array", () => {
+      const stooges = [
+        { name: "moe", age: 40 },
+        { name: "larry", age: 50 },
+        { name: "curly", age: 60 },
+      ];
+      const result = _.sortBy(stooges, "name");
+      const expected = [
+        { name: "curly", age: 60 },
+        { name: "larry", age: 50 },
+        { name: "moe", age: 40 },
+      ];
+      expect(result).to.eql(expected);
+    });
+  });
 });
