@@ -9,11 +9,11 @@ class LoScore {
   |~~~~~~~~~~
   * */
   uniq(array) {
-    const uniq = {};
+    const uniqValues = {};
     const result = [];
     for (let i = 0; i < array.length; i++) {
-      if (uniq[array[i]] === undefined) {
-        uniq[array[i]] = true;
+      if (uniqValues[array[i]] === undefined) {
+        uniqValues[array[i]] = true;
         result.push(array[i]);
       }
     }
@@ -177,7 +177,7 @@ class LoScore {
 
     const result = [];
     this.each(arrays, (arr) => {
-      for (var i = 0; i < len; i++) {
+      for (let i = 0; i < len; i++) {
         if (result[i] === undefined) {
           result[i] = [];
         }
